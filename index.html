@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harikrishnan | iOS Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-light: #2563eb;
+            --secondary-light: #1d4ed8;
+            --accent-light: #3b82f6;
+            --dark-light: #0f172a;
+            --light-light: #f8fafc;
+            --text-light: #0f172a;
+            --background-light: #f8fafc;
+            --card-light: #ffffff;
+            --border-light: rgba(0,0,0,0.1);
+            --shadow-light: rgba(0,0,0,0.1);
+            
+            /* Dark Theme */
+            --primary-dark: #3b82f6;
+            --secondary-dark: #2563eb;
+            --accent-dark: #60a5fa;
+            --dark-dark: #f8fafc;
+            --light-dark: #0f172a;
+            --text-dark: #f8fafc;
+            --background-dark: #111827;
+            --card-dark: #1f2937;
+            --border-dark: rgba(255,255,255,0.1);
+            --shadow-dark: rgba(0,0,0,0.3);
+            
+            /* Default to dark theme */
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --accent: var(--accent-dark);
+            --dark: var(--dark-dark);
+            --light: var(--light-dark);
+            --text: var(--text-dark);
+            --background: var(--background-dark);
+            --card: var(--card-dark);
+            --border: var(--border-dark);
+            --shadow: var(--shadow-dark);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            transition: 0.5s;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        body.light-theme .navbar {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+            min-height: 100vh;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .skill-card {
+            background: var(--card);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: left;
+            width: 420px;
+            transition: transform 0.5s, background-color 0.5s;
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            position: relative;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .project-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .project-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--background);
+            transition: background-color 0.3s;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            background-color: var(--card);
+            color: var(--text);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Language Progress Bars */
+        .language-progress {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            margin: 1rem 0;
+            transition: background-color 0.3s;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            width: 0;
+            transition: width 1s ease-out;
+            border-radius: 4px;
+        }
+
+        /* Tech Stack Chips */
+        .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .tech-chip {
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--border);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body.light-theme .tech-chip {
+            background: rgba(0,0,0,0.05);
+        }
+
+        /* Loader Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s, background-color 0.3s;
+        }
+
+        .loader::after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 6rem 1.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: start;
+    /* background: #121212; */
+    color: var(--accent);
+    padding: 2rem;
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Appear Effect */
+#hero.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Content */
+.hero-content {
+    max-width: 650px;
+    padding: 1rem;
+}
+
+/* Typing Animation */
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.typing-text::after {
+    content: "|";
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(12) infinite alternate;
+}
+
+@keyframes typing {
+    0% { content: "S|"; }
+    10% { content: "So|"; }
+    20% { content: "Soft|"; }
+    30% { content: "Softw|"; }
+    40% { content: "Softwa|"; }
+    50% { content: "Softwar|"; }
+    60% { content: "Software|"; }
+    70% { content: "Software E|"; }
+    80% { content: "Software Eng|"; }
+    90% { content: "Software Engineer|"; }
+    100% { content: "Software Engineer"; }
+}
+
+/* Subtext */
+.hero-content p {
+    font-size: 1.3rem;
+    color: #b3b3b3;
+    margin-bottom: 1.8rem;
+    line-height: 1.5;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    /* justify-content: center; */
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--text);
+    font-size: 1.7rem;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .social-links {
+        gap: 1rem;
+    }
+    .social-links a {
+        font-size: 1.4rem;
+    }
+}
+
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+
+    &>div {
+        /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+        position: absolute;
+        background-position: center top;
+        background-size: cover;
+        border-radius: 1em;
+        width: 280px;
+        height: 400px;
+        overflow: hidden;
+        top: 50%;
+    }
+
+    & div:nth-child(1), div:nth-child(2) {
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    & div:nth-child(3) {
+        left: calc(50%);
+    }
+
+    & div:nth-child(4) {
+        left: calc(50% + 200px);
+    }
+
+    & div:nth-child(5) {
+        left: calc(50% + 300px);
+    }
+
+    & div:nth-child(6) {
+        left: calc(50% + 400px);
+    }
+
+    & div:nth-child(7) {
+        left: calc(50% + 500px);
+    }
+
+    & div:nth-child(8) {
+        left: calc(50% + 600px);
+    }
+
+    & div:nth-child(9) {
+        left: calc(50% + 700px);
+    }
+
+    & div:nth-child(10) {
+        left: calc(50% + 800px);
+    }
+
+    & div:nth-child(11) {
+        left: calc(50% + 900px);
+    }
+
+    & div:nth-child(12) {
+        left: calc(50% + 1000px);
+    }
+
+}
+
+
+.details{
+    position: absolute;
+    z-index: 10;
+    width: 20px;
+    height: 10px;
+    /* background-color: rgba(0, 0, 0,0.3); */
+    padding: 1em;
+    border-radius: 1em;
+    top:0;
+    backdrop-filter: blur(7px);
+
+    & h1{
+        font-size: 2rem;
+        color: red;
+        margin-bottom: 1em;
+        font-weight: bolder;
+    }
+
+    & p{
+        font-size: 1.5rem;
+        animation-delay: 0.3s;
+        line-height: 1.5;
+        color: beige;
+    }
+
+    & *{
+        opacity: 0;
+    }
+
+    & div{
+        z-index: 100;
+    }
+}
+
+.animate{
+    animation: appear 0.6s forwards;
+}
+
+@keyframes appear{
+    from{
+        opacity: 0;
+        transform: translate(0,20px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <button id="themeToggle" class="theme-toggle">
+            <i class="fas fa-sun"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Harikrishnan V<br><span class="typing-text"></span></h1>
+            <p>Bringing ideas to life through code, creativity, and a relentless pursuit of perfection.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/krishnan2005g" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://harikrishnankv-6964-8443.zcodeusers.in/" target="_blank"><i class="fas fa-folder"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-content">
+            <h2>Technical Mastery</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-swift skill-icon"></i>
+                    <h3>iOS</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="85%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Swift 6.0</span>
+                        <span class="tech-chip">SwiftUI</span>
+                        <span class="tech-chip">Swift Data</span>
+                        <span class="tech-chip">Combine</span>
+                        <span class="tech-chip">Vapor</span>
+                        <span class="tech-chip">Swift Charts</span>
+                        <span class="tech-chip">Swift Package Manger (SPM)</span>
+                        <span class="tech-chip">MVVM</span>
+                        <span class="tech-chip">UI Kit</span>
+                    </div>
+                </div>
+    
+                <div class="skill-card">
+                    <i class="fas fa-globe skill-icon"></i>
+                    <h3>Web Development</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="85%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">HTML</span>
+                        <span class="tech-chip">CSS</span>
+                        <span class="tech-chip">JavaScript</span>
+                        <span class="tech-chip">Node.js</span>
+                    </div>
+                </div>
+    
+                <div class="skill-card">
+                    <i class="fab fa-python skill-icon"></i>
+                    <h3>Python</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="90%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Flask</span>
+                        <span class="tech-chip">FastAPI</span>
+                        <span class="tech-chip">Database Connection</span>
+                        <span class="tech-chip">Server Development</span>
+                    </div>
+                </div>
+    
+                <div class="skill-card">
+                    <i class="fab fa-java skill-icon"></i>
+                    <h3>Java</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="70%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Intermediate Java</span>
+                        <span class="tech-chip">JDBC</span>
+                        <span class="tech-chip">Servlets</span>
+                    </div>
+                </div>
+    
+                <div class="skill-card">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3>Databases</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="55%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">SQL</span>
+                        <span class="tech-chip">SQLite</span>
+                        <span class="tech-chip">MySQL</span>
+                    </div>
+                </div>
+    
+                <div class="skill-card">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>C</h3>
+                    <div class="language-progress">
+                        <div class="progress-fill" data-percent="15%"></div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Basic C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-content">
+            <h2>Spotlight Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" 
+                         style="background-image: url('https://source.unsplash.com/random/800x600?app')">
+                    </div>
+                    <div class="project-content">
+                        <h3>Crypto Sphere</h3>
+                        <p>Crypto Sphere is a seamless iOS app designed for effortless crypto transactions. Users can buy, hold, and transfer digital assets at real-time market prices. The app enables secure peer-to-peer transactions while allowing users to chat in real time using WebSockets. With an intuitive interface and a focus on security, Crypto Sphere bridges the gap between digital payments and instant communication, creating a smooth and connected crypto experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech-chip">Swift</span>
+                            <span class="tech-chip">SwiftUI</span>
+                            <span class="tech-chip">UIKit</span>
+                            <span class="tech-chip">Pyhton Server</span>
+                            <span class="tech-chip">SQLite</span>
+                            <span class="tech-chip">Websockets</span>
+                            <span class="tech-chip">GoogleSign-SDK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <section class="details">
+                        <h1></h1>
+                        <p></p>
+                        <div>
+                            <
+                        </div>
+                    </section>
+                     <section class="carousel">
+    
+                     </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>harikrishnan.kv@zohocorp.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 86080*****</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Chennai, India</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Me a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById("hero");
+
+            function revealHero() {
+                const rect = heroSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    heroSection.classList.add("show");
+                    window.removeEventListener("scroll", revealHero); // Run only once
+                }
+            }
+
+            window.addEventListener("scroll", revealHero);
+            revealHero();
+
+            // Theme switching functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check if user has a stored preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                applyLightTheme();
+            } else {
+                // Default is dark theme (no class needed)
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                applyDarkTheme();
+            }
+            
+            // Toggle theme when button is clicked
+            themeToggle.addEventListener('click', () => {
+                if (document.body.classList.contains('light-theme')) {
+                    document.body.classList.remove('light-theme');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                    applyDarkTheme();
+                } else {
+                    document.body.classList.add('light-theme');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                    applyLightTheme();
+                }
+            });
+            
+            function applyDarkTheme() {
+                document.documentElement.style.setProperty('--primary', 'var(--primary-dark)');
+                document.documentElement.style.setProperty('--secondary', 'var(--secondary-dark)');
+                document.documentElement.style.setProperty('--accent', 'var(--accent-dark)');
+                document.documentElement.style.setProperty('--dark', 'var(--dark-dark)');
+                document.documentElement.style.setProperty('--light', 'var(--light-dark)');
+                document.documentElement.style.setProperty('--text', 'var(--text-dark)');
+                document.documentElement.style.setProperty('--background', 'var(--background-dark)');
+                document.documentElement.style.setProperty('--card', 'var(--card-dark)');
+                document.documentElement.style.setProperty('--border', 'var(--border-dark)');
+                document.documentElement.style.setProperty('--shadow', 'var(--shadow-dark)');
+            }
+            
+            function applyLightTheme() {
+                document.documentElement.style.setProperty('--primary', 'var(--primary-light)');
+                document.documentElement.style.setProperty('--secondary', 'var(--secondary-light)');
+                document.documentElement.style.setProperty('--accent', 'var(--accent-light)');
+                document.documentElement.style.setProperty('--dark', 'var(--dark-light)');
+                document.documentElement.style.setProperty('--light', 'var(--light-light)');
+                document.documentElement.style.setProperty('--text', 'var(--text-light)');
+                document.documentElement.style.setProperty('--background', 'var(--background-light)');
+                document.documentElement.style.setProperty('--card', 'var(--card-light)');
+                document.documentElement.style.setProperty('--border', 'var(--border-light)');
+                document.documentElement.style.setProperty('--shadow', 'var(--shadow-light)');
+            }
+
+            // Loading Screen
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    document.querySelector('.loader').classList.add('hidden');
+                }, 1000);
+            });
+
+            // Section Observer
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Progress Bars Animation
+            const progressObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressFill = entry.target.querySelector('.progress-fill');
+                        const percent = progressFill.getAttribute('data-percent');
+                        progressFill.style.width = percent;
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.skill-card').forEach(card => {
+                progressObserver.observe(card);
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Form Submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the form data to a server
+                console.log({ name, email, subject, message });
+                
+                // Show success message
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        });
+
+
+
+const obj =
+{
+    CAROUSEL: document.querySelector('.carousel'),
+    TITLE: document.querySelector('.details > h1'),
+    DESC: document.querySelector('.details > p'),
+    info: [
+        {
+            title: "The Batman",
+            desc: "Batman follows billionaire Bruce Wayne, who becomes a vigilante to protect Gotham City after his parents’ murder.Armed with technology and combat skills, he battles iconic villains like the Joker while confronting his inner struggles.The story explores themes of justice, vengeance, and the line between hero and vigilante.Its dark tone and emotional depth make it a timeless tale.",
+            img: "Images/1.png"
+        },
+
+        {
+            title: "Wonder Woman",
+            desc: "Wonder Woman follows Diana, an Amazonian princess raised on a secluded island, who discovers her destiny as a warrior. When an American pilot crashes on the island, she learns of a world war raging outside and joins the fight to stop the god of war, Ares, from destroying humanity. As she embraces her powers and her role as a hero, Diana faces battles that test her strength, courage, and ideals. The film explores themes of empowerment, love, and the fight for justice.",
+            img: "Images/2.png"
+        },
+
+        {
+            title: "London has Fallen",
+            desc: "London Has Fallen is an action-thriller where Secret Service agent Mike Banning protects U.S. President Benjamin Asher during a terrorist attack on world leaders in London. Amid chaos, Banning fights to survive, uncover the conspiracy, and stop further destruction. The film delivers intense action and themes of loyalty and resilience.",
+            img: "Images/3.png"
+        },
+
+
+        {
+            title: "The Little Mermaid",
+            desc: "The Little Mermaid is a live-action adaptation of Disney's animated classic, telling the story of Ariel, a curious and adventurous young mermaid. Longing to live on land, she makes a dangerous deal with the sea witch Ursula to trade her voice for legs. As Ariel navigates her new life on land, she must confront challenges, discover true love with Prince Eric, and save her underwater kingdom. The film features themes of self-discovery, sacrifice, and the power of love.",
+            img: 'Images/4.png'
+        },
+
+        {
+            title: "Exists",
+            desc: "Exists is a found-footage horror film where a group of friends on a remote Texas trip encounters a terrifying creature in the woods. Their fun getaway turns into a desperate fight for survival as they are hunted by what appears to be Bigfoot. With tense moments, eerie visuals, and escalating danger, the movie explores fear, isolation, and primal terror.",
+            img: "Images/5.png"
+        },
+
+        {
+            title: "Ra One",
+            desc: "Ra.One is a sci-fi action film about a video game designer whose creation, a villainous AI named Ra.One, comes to life and wreaks havoc in the real world. To stop him, the designer’s son teams up with G.One, the game’s hero. The film explores themes of technology, family, and good versus evil, featuring stunning visual effects and action-packed sequences.",
+            img: "Images/6.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Fast & Furious is an adrenaline-fueled action franchise centered around street racing, heists, and high-stakes missions. It follows Dominic Toretto and his crew as they face dangerous foes while emphasizing family and loyalty. Known for thrilling car chases, explosive stunts, and dynamic characters, the series combines heart-pounding action with emotional depth.",
+            img: "Images/7.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Black Widow follows Natasha Romanoff, the skilled spy and Avenger, as she confronts her dark past and unfinished business. Set after Captain America: Civil War, Natasha reunites with her estranged 'family' to take down the sinister Red Room, a program that trained her as an assassin. The film explores themes of redemption, family bonds, and resilience, blending intense action with emotional storytelling.",
+            img: "Images/8.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Black Widow follows Natasha Romanoff, the skilled spy and Avenger, as she confronts her dark past and unfinished business. Set after Captain America: Civil War, Natasha reunites with her estranged 'family' to take down the sinister Red Room, a program that trained her as an assassin. The film explores themes of redemption, family bonds, and resilience, blending intense action with emotional storytelling.",
+            img: "Images/9.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Black Widow follows Natasha Romanoff, the skilled spy and Avenger, as she confronts her dark past and unfinished business. Set after Captain America: Civil War, Natasha reunites with her estranged 'family' to take down the sinister Red Room, a program that trained her as an assassin. The film explores themes of redemption, family bonds, and resilience, blending intense action with emotional storytelling.",
+            img: "Images/10.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Black Widow follows Natasha Romanoff, the skilled spy and Avenger, as she confronts her dark past and unfinished business. Set after Captain America: Civil War, Natasha reunites with her estranged 'family' to take down the sinister Red Room, a program that trained her as an assassin. The film explores themes of redemption, family bonds, and resilience, blending intense action with emotional storytelling.",
+            img: "Images/11.png"
+        },
+
+        {
+            title: "Fast and Furious",
+            desc: "Black Widow follows Natasha Romanoff, the skilled spy and Avenger, as she confronts her dark past and unfinished business. Set after Captain America: Civil War, Natasha reunites with her estranged 'family' to take down the sinister Red Room, a program that trained her as an assassin. The film explores themes of redemption, family bonds, and resilience, blending intense action with emotional storytelling.",
+            img: "Images/12.png"
+        },
+
+    ],
+
+    addAll() {
+        this.info.forEach((e) => {
+            let div = document.createElement('div');
+            div.style.backgroundImage = `url(${e.img})`
+            div.style.backgroundSize = "contain";
+div.style.backgroundPosition = "center";
+div.style.backgroundRepeat = "no-repeat";
+            this.CAROUSEL.append(div)
+        })
+        this.updateDetails()
+    },
+
+    swipeRight() {
+        this.CAROUSEL.append(this.CAROUSEL.firstElementChild);
+    },
+
+    swipeLeft() {
+        this.CAROUSEL.prepend(this.CAROUSEL.lastChild);
+    },
+
+    updateDetails() {
+        obj.TITLE.classList.add('animate');
+        obj.DESC.classList.add('animate');
+        let details = this.info.find((e) => {
+            return e.img == this.CAROUSEL.firstElementChild.nextElementSibling.style.backgroundImage.slice(5, -2)
+        })
+        // this.TITLE.textContent = details.title
+        // this.DESC.textContent = details.desc
+    },
+
+    init() {
+
+    }
+
+}
+let si;
+obj.addAll()
+document.addEventListener('keydown', (e) => {
+    if (e.key == "ArrowLeft") {
+        obj.TITLE.classList.remove('animate');
+        obj.DESC.classList.remove('animate');
+        void obj.TITLE.offsetWidth;
+        void obj.DESC.offsetWidth;
+        obj.swipeRight();
+        obj.updateDetails();
+    } else if (e.key == "ArrowRight") {
+        obj.TITLE.classList.remove('animate');
+        obj.DESC.classList.remove('animate');
+        void obj.TITLE.offsetWidth;
+        void obj.DESC.offsetWidth;
+        obj.swipeLeft();
+        obj.updateDetails();
+    }
+})
+
+setInterval(()=>{
+    obj.TITLE.classList.remove('animate');
+    obj.DESC.classList.remove('animate');
+    void obj.TITLE.offsetWidth;
+    void obj.DESC.offsetWidth;
+    obj.swipeLeft();
+    obj.updateDetails();
+},4000)
+
+
+
+    </script>
+</body>
+</html>
