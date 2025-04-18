@@ -611,115 +611,34 @@ body.light-theme .tech-chip {
 .carousel_cal {
     position: relative;
     overflow: hidden;
+    height: 400px;
+    margin: 2rem 0;
 }
 
 .carousel_cal > div {
     position: absolute;
-    background-position: center top;
-    background-size: cover;
-    border-radius: 1em;
-    width: 280px;
-    height: 400px;
-    overflow: hidden;
-    top: 50%;
-}
-
-.carousel_cal div:nth-child(1), .carousel_cal div:nth-child(2) {
-    border-radius: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel_cal div:nth-child(1) {
+    transform: translateX(0);
+}
+
+.carousel_cal div:nth-child(2) {
+    transform: translateX(100px);
 }
 
 .carousel_cal div:nth-child(3) {
-    left: calc(50%);
+    transform: translateX(200px);
 }
 
 .carousel_cal div:nth-child(4) {
-    left: calc(50% + 200px);
-}
-
-.carousel_cal div:nth-child(5) {
-    left: calc(50% + 300px);
-}
-
-.carousel_cal div:nth-child(6) {
-    left: calc(50% + 400px);
-}
-
-.carousel_cal div:nth-child(7) {
-    left: calc(50% + 500px);
-}
-
-.carousel_cal div:nth-child(8) {
-    left: calc(50% + 600px);
-}
-
-.carousel_cal div:nth-child(9) {
-    left: calc(50% + 700px);
-}
-
-.carousel_cal div:nth-child(10) {
-    left: calc(50% + 800px);
-}
-
-.carousel_cal div:nth-child(11) {
-    left: calc(50% + 900px);
-}
-
-.carousel_cal div:nth-child(12) {
-    left: calc(50% + 1000px);
-}
-
-.details {
-    position: absolute;
-    z-index: 10;
-    width: 20px;
-    height: 10px;
-    padding: 1em;
-    border-radius: 1em;
-    top: 0;
-    backdrop-filter: blur(7px);
-}
-
-.details h1 {
-    font-size: 2rem;
-    color: red;
-    margin-bottom: 1em;
-    font-weight: bolder;
-}
-
-.details p {
-    font-size: 1.5rem;
-    animation-delay: 0.3s;
-    line-height: 1.5;
-    color: beige;
-}
-
-.details * {
-    opacity: 0;
-}
-
-.details div {
-    z-index: 100;
-}
-
-.animate {
-    animation: appear 0.6s forwards;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translate(0,20px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0px);
-    }
+    transform: translateX(300px);
 }
 
 /* Calculator Section */
