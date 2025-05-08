@@ -272,7 +272,42 @@ const calculatorObj = {
     }
 }
 
+// FullStack Carousel functionality
+const fullObj = {
+    CAROUSEL: document.querySelector('.carousel_full'),
+    info: [
+        {
+            img: "Images/QuestionManager.png"
+        }
+    ],
+
+    addAll() {
+        this.info.forEach((e) => {
+            let div = document.createElement('div');
+            div.style.backgroundImage = `url(${e.img})`;
+            div.style.backgroundSize = "contain";
+            div.style.backgroundPosition = "center";
+            div.style.backgroundRepeat = "no-repeat";
+            this.CAROUSEL.append(div);
+        });
+    },
+
+    swipeRight() {
+        this.CAROUSEL.append(this.CAROUSEL.firstElementChild);
+    },
+
+    swipeLeft() {
+        this.CAROUSEL.prepend(this.CAROUSEL.lastChild);
+    },
+
+    init() {
+        this.addAll();
+    }
+}
+
+
 calculatorObj.init();
+fullObj.init();
 
 document.addEventListener('keydown', (e) => {
     if (e.key === "ArrowLeft") {
