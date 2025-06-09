@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- TYPING EFFECT ---
     const typingTextElement = document.querySelector('.typing-text');
-    const words = ["iOS Engineer", "Software Developer", "Creative Problem-Solver"];
+    const words = ["Software Developer", "Creative Problem-Solver"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
