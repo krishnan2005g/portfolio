@@ -4,271 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harikrishnan | iOS Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="background-aurora"></div>
     <div class="loader">
         <div class="spinner"></div>
     </div>
 
     <nav class="navbar">
-        <button id="themeToggle" class="theme-toggle">
-            <i class="fas fa-sun"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
     </nav>
 
     <section id="hero">
         <div class="hero-content">
-            <h1>Harikrishnan V<br><span class="typing-text"></span></h1>
-            <p>Bringing ideas to life through code, creativity, and a relentless pursuit of perfection.
+            <h1 class="animate-in" style="--delay: 0.1s;">Harikrishnan V</h1>
+            <h2 class="animate-in" style="--delay: 0.2s;"><span class="typing-text"></span></h2>
+            <p class="animate-in" style="--delay: 0.3s;">
+                Bringing ideas to life through code, creativity, and a relentless pursuit of perfection.
             </p>
-            <div class="social-links">
-                <a href="https://github.com/krishnan2005g" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://harikrishnankv-6964-8443.zcodeusers.in/" target="_blank"><i class="fas fa-folder"></i></a>
-                <a href="https://linkedin.com/in/harikrishnan-v25" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <div class="social-links animate-in" style="--delay: 0.4s;">
+                <a href="https://github.com/krishnan2005g" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://harikrishnankv-6964-8443.zcodeusers.in/" target="_blank" aria-label="Portfolio Folder"><i class="fas fa-folder"></i></a>
+                <a href="https://linkedin.com/in/harikrishnan-v25" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </section>
 
     <section id="skills">
-        <div class="section-content">
-            <h2>Technical Mastery</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-swift skill-icon"></i>
-                    <h3>iOS</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="85%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Swift 6.0</span>
-                        <span class="tech-chip">SwiftUI</span>
-                        <span class="tech-chip">Swift Data</span>
-                        <span class="tech-chip">Combine</span>
-                        <span class="tech-chip">Vapor</span>
-                        <span class="tech-chip">Swift Charts</span>
-                        <span class="tech-chip">Swift Package Manger (SPM)</span>
-                        <span class="tech-chip">MVVM</span>
-                        <span class="tech-chip">UI Kit</span>
-                    </div>
+        <h2>Technical Mastery</h2>
+        <div class="skills-grid">
+            <!-- Skill Cards remain the same as your original, just wrapped in a grid -->
+            <div class="skill-card">
+                <i class="fab fa-swift skill-icon"></i>
+                <h3>iOS</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="85%"></div>
                 </div>
-
-                <div class="skill-card">
-                    <i class="fas fa-brain skill-icon"></i>
-                    <h3>Problem Solving</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="55%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Data Structures</span>
-                        <span class="tech-chip">Algorithms</span>
-                        <span class="tech-chip">Logic Building</span>
-                        <span class="tech-chip">Optimized Solutions</span>
-                        <span class="tech-chip">Competitive Coding</span>
-                    </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Swift 6.0</span><span class="tech-chip">SwiftUI</span><span class="tech-chip">Swift Data</span><span class="tech-chip">Combine</span><span class="tech-chip">Vapor</span><span class="tech-chip">Swift Charts</span><span class="tech-chip">SPM</span><span class="tech-chip">MVVM</span><span class="tech-chip">UI Kit</span>
                 </div>
-
-                <div class="skill-card">
-                    <i class="fas fa-cloud skill-icon"></i>
-                    <h3>Zoho Catalyst</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="70%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Host Website</span>
-                        <span class="tech-chip">Host Server</span>
-                        <span class="tech-chip">Integrate Databases</span>
-                        <span class="tech-chip">Advanced IO</span>
-                        <span class="tech-chip">APIs</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-brain skill-icon"></i>
+                <h3>Problem Solving</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="55%"></div>
                 </div>
-
-    
-                <div class="skill-card">
-                    <i class="fas fa-globe skill-icon"></i>
-                    <h3>Web Development</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="85%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">HTML</span>
-                        <span class="tech-chip">CSS</span>
-                        <span class="tech-chip">JavaScript</span>
-                        <span class="tech-chip">Node.js</span>
-                    </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Data Structures</span><span class="tech-chip">Algorithms</span><span class="tech-chip">Logic Building</span><span class="tech-chip">Optimized Solutions</span><span class="tech-chip">Competitive Coding</span>
                 </div>
-    
-                <div class="skill-card">
-                    <i class="fab fa-python skill-icon"></i>
-                    <h3>Python</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="90%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Flask</span>
-                        <span class="tech-chip">FastAPI</span>
-                        <span class="tech-chip">Database Connection</span>
-                        <span class="tech-chip">Server Development</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-cloud skill-icon"></i>
+                <h3>Zoho Catalyst</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="70%"></div>
                 </div>
-    
-                <div class="skill-card">
-                    <i class="fab fa-java skill-icon"></i>
-                    <h3>Java</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="70%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Intermediate Java</span>
-                        <span class="tech-chip">JDBC</span>
-                        <span class="tech-chip">Servlets</span>
-                    </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Host Website</span><span class="tech-chip">Host Server</span><span class="tech-chip">Integrate Databases</span><span class="tech-chip">Advanced IO</span><span class="tech-chip">APIs</span>
                 </div>
-    
-                <div class="skill-card">
-                    <i class="fas fa-database skill-icon"></i>
-                    <h3>Databases</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="55%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">SQL</span>
-                        <span class="tech-chip">SQLite</span>
-                        <span class="tech-chip">MySQL</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-globe skill-icon"></i>
+                <h3>Web Development</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="85%"></div>
                 </div>
-                
-                <div class="skill-card">
-                    <i class="fab fa-windows skill-icon"></i>
-                    <h3>Windows Development</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="35%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">C#</span>
-                        <span class="tech-chip">WinUI 3.0</span>
-                        <span class="tech-chip">WPF</span>
-                        <span class="tech-chip">XAML</span>
-                    </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">HTML</span><span class="tech-chip">CSS</span><span class="tech-chip">JavaScript</span><span class="tech-chip">Node.js</span>
                 </div>
-    
-                <div class="skill-card">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3>C</h3>
-                    <div class="language-progress">
-                        <div class="progress-fill" data-percent="15%"></div>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-chip">Basic C</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-python skill-icon"></i>
+                <h3>Python</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="90%"></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Flask</span><span class="tech-chip">FastAPI</span><span class="tech-chip">Database Connection</span><span class="tech-chip">Server Development</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-java skill-icon"></i>
+                <h3>Java</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="70%"></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Intermediate Java</span><span class="tech-chip">JDBC</span><span class="tech-chip">Servlets</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Databases</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="55%"></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">SQL</span><span class="tech-chip">SQLite</span><span class="tech-chip">MySQL</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-windows skill-icon"></i>
+                <h3>Windows Development</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="35%"></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">C#</span><span class="tech-chip">WinUI 3.0</span><span class="tech-chip">WPF</span><span class="tech-chip">XAML</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>C</h3>
+                <div class="language-progress">
+                    <div class="progress-fill" data-percent="15%"></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-chip">Basic C</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-content">
-        <h2>Projects</h2>
-    <div>
-
-    </div>
     <section id="projects">
-        <div class="section-content">
-            <h2>iOS App</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" 
-                         style="background-image: url('https://source.unsplash.com/random/800x600?app')">
-                    </div>
-                    <div class="project-content">
-                        <h3>Crypto Sphere</h3>
-                        <p>Crypto Sphere is a seamless iOS app designed for effortless crypto transactions. Users can buy, hold, and transfer digital assets at real-time market prices. The app enables secure peer-to-peer transactions while allowing users to chat in real time using WebSockets. With an intuitive interface and a focus on security, Crypto Sphere bridges the gap between digital payments and instant communication, creating a smooth and connected crypto experience.</p>
-                        <div class="tech-stack">
-                            <span class="tech-chip">Swift</span>
-                            <span class="tech-chip">SwiftUI</span>
-                            <span class="tech-chip">UIKit</span>
-                            <span class="tech-chip">Pyhton Server</span>
-                            <span class="tech-chip">SQLite</span>
-                            <span class="tech-chip">Websockets</span>
-                            <span class="tech-chip">GoogleSign-SDK</span>
-                        </div>
+        <h2>Projects</h2>
+
+        <div class="project-category">
+            <h3>iOS App</h3>
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="carousel" data-carousel-name="crypto">
+                        <!-- JS will populate this -->
                     </div>
                 </div>
-
-
-
-                <div class="carousel">
+                <div class="project-content">
+                    <h4>Crypto Sphere</h4>
+                    <p>Crypto Sphere is a seamless iOS app for effortless crypto transactions. Users can buy, hold, and transfer digital assets at real-time prices. It enables secure P2P transactions while allowing users to chat in real time using WebSockets, bridging digital payments and instant communication.</p>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Swift</span><span class="tech-chip">SwiftUI</span><span class="tech-chip">UIKit</span><span class="tech-chip">Python Server</span><span class="tech-chip">SQLite</span><span class="tech-chip">Websockets</span><span class="tech-chip">GoogleSign-SDK</span>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div class="project-category">
+            <h3>Full Stack App</h3>
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="carousel" data-carousel-name="fullstack">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h4>Catalyst Full Stack App</h4>
+                    <p>A full-stack app with a web-based question manager and an iOS quiz app fetching from a Catalyst database. <a href="https://quiz-60040580931.development.catalystserverless.in/app/index.html" target="_blank">Open web app</a></p>
+                    <div class="tech-stack">
+                        <span class="tech-chip">Catalyst</span><span class="tech-chip">Node.js</span><span class="tech-chip">Swift</span><span class="tech-chip">SwiftUI</span><span class="tech-chip">HTML/CSS/JS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="section-content">
-            <h2>Full Stack App</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" 
-                        style="background-image: url('https://source.unsplash.com/random/800x600?catalyst')">
-                    </div>
-                    <div class="project-content">
-                        <h3>Catalyst Full Stack App</h3>
-                        <p>A full-stack application built with Catalyst, featuring a web-based question manager and an iOS app that fetches questions from the database and allows users to take a quiz. <a href="https://quiz-60040580931.development.catalystserverless.in/app/index.html" target="_blank">Click here to open the web application</a></p>
-                        <div class="tech-stack">
-                            <span class="tech-chip">Catalyst</span>
-                            <span class="tech-chip">Node.js</span>
-                            <span class="tech-chip">Swift</span>
-                            <span class="tech-chip">SwiftUI</span>
-                            <span class="tech-chip">HTML</span>
-                            <span class="tech-chip">CSS</span>
-                            <span class="tech-chip">JavaScript</span>
-                        </div>
+        <div class="project-category">
+            <h3>Windows App</h3>
+            <div class="project-card">
+                <div class="project-media">
+                    <div class="carousel" data-carousel-name="calculator">
+                         <!-- JS will populate this -->
                     </div>
                 </div>
-
-                <div class="carousel_full">
-                </div>
-            </div>
-        </div>
-
-        <div class="section-content">
-            <h2>Windows App</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" 
-                        style="background-image: url('https://source.unsplash.com/random/800x600?calculator')">
+                <div class="project-content">
+                    <h4>Windows Calculator</h4>
+                    <p>A modern Windows calculator built with WinUI 3.0. It features a sleek interface, supports standard and scientific calculations, history tracking, and keyboard shortcuts, following modern Windows design principles for a seamless experience.</p>
+                    <div class="tech-stack">
+                        <span class="tech-chip">C#</span><span class="tech-chip">WinUI 3.0</span><span class="tech-chip">XAML</span><span class="tech-chip">MVVM</span><span class="tech-chip">Windows App SDK</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Windows Calculator</h3>
-                        <p>A modern Windows calculator application built with WinUI 3.0, featuring a sleek and intuitive interface. The app supports basic arithmetic operations, scientific calculations. It includes a history feature to track previous calculations and supports keyboard shortcuts for quick access. The application follows modern Windows design principles and provides a seamless user experience across different Windows devices.</p>
-                        <div class="tech-stack">
-                            <span class="tech-chip">C#</span>
-                            <span class="tech-chip">WinUI 3.0</span>
-                            <span class="tech-chip">XAML</span>
-                            <span class="tech-chip">NuGet Package Manager</span>
-                            <span class="tech-chip">MVVM Architecture</span>
-                            <span class="tech-chip">Windows App SDK</span>
-                        </div>
-                    </div>
-                </div>
-                    
-                <div class="carousel_cal">
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="contact">
         <div class="contact-container">
             <div class="contact-info">
                 <h2>Get In Touch</h2>
                 <p>Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
-                
                 <div class="contact-card">
                     <i class="fas fa-envelope contact-icon"></i>
                     <div>
@@ -276,7 +209,6 @@
                         <p>harikrishnan.kv@zohocorp.com</p>
                     </div>
                 </div>
-                
                 <div class="contact-card">
                     <i class="fas fa-phone contact-icon"></i>
                     <div>
@@ -284,7 +216,6 @@
                         <p>+91 86080*****</p>
                     </div>
                 </div>
-                
                 <div class="contact-card">
                     <i class="fas fa-map-marker-alt contact-icon"></i>
                     <div>
@@ -294,35 +225,27 @@
                 </div>
             </div>
             
-            <div class="contact-form">
+            <div class="contact-form-wrapper">
                 <h2>Send Me a Message</h2>
-                <form id="contactForm">
+                <form id="contactForm" class="contact-form">
                     <div class="form-group">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" id="name" class="form-input" required>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="Your Name">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" id="email" class="form-input" required>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="Your Email">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" class="form-input" required>
+                        <input type="text" id="subject" name="subject" class="form-input" required placeholder="Subject">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="message" class="form-label">Your Message</label>
-                        <textarea id="message" class="form-textarea" required></textarea>
+                        <textarea id="message" name="message" class="form-textarea" required placeholder="Your Message"></textarea>
                     </div>
-                    
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
