@@ -60,6 +60,54 @@ body {
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 999px;
+    border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
+/* Accessible focus states */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* Selection color */
+::selection {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1100;
+    pointer-events: none;
+}
+.scroll-progress-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--gradient);
+    transition: width 0.1s linear;
+}
+
 /* --- ANIMATED BACKGROUND --- */
 .background-aurora {
     position: fixed;
@@ -271,6 +319,7 @@ section > h2::after {
     color: var(--accent);
     margin: 0.5rem 0 1.5rem;
     font-weight: 500;
+    min-height: 1.4em;
 }
 .typing-text::after {
     content: '|';
@@ -283,6 +332,44 @@ section > h2::after {
     font-size: 1.25rem;
     max-width: 600px;
     margin: 0 auto 2rem;
+}
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.btn-primary {
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: 0 8px 20px -8px var(--primary);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px -10px var(--primary);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--card-border);
+}
+.btn-outline:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    color: var(--primary);
 }
 .social-links {
     display: flex;
@@ -655,5 +742,96 @@ section > h2::after {
     .nav-links a {
         padding: 0.45rem 0.5rem;
         font-size: 0.8rem;
+    }
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 2rem;
+}
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+.footer-social a {
+    color: var(--text);
+    font-size: 1.4rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-social a:hover {
+    color: var(--primary);
+    transform: translateY(-4px);
+}
+.site-footer p {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+/* --- BACK TO TOP --- */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 20px -6px var(--primary);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.back-to-top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 26px -8px var(--primary);
+}
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* --- STAGGERED CARD REVEAL --- */
+.skill-card, .timeline-item, .contact-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.skill-card.visible, .timeline-item.visible, .contact-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .background-aurora {
+        animation: none !important;
     }
 }
