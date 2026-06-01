@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="background-aurora"></div>
+    <div class="scroll-progress"><span class="scroll-progress-bar"></span></div>
     <div class="loader">
         <div class="spinner"></div>
     </div>
@@ -35,7 +36,11 @@
             <p class="animate-in" style="--delay: 0.3s;">
                 Bringing ideas to life through code, creativity, and a relentless pursuit of perfection.
             </p>
-            <div class="social-links animate-in" style="--delay: 0.4s;">
+            <div class="hero-cta animate-in" style="--delay: 0.4s;">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+            <div class="social-links animate-in" style="--delay: 0.5s;">
                 <a href="https://github.com/krishnan2005g" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/harikrishnan-v25" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
@@ -275,6 +280,17 @@
             </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://github.com/krishnan2005g" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/harikrishnan-v25" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:v.harikrishnan2005@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; <span id="year"></span> Harikrishnan V. Built with passion.</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
