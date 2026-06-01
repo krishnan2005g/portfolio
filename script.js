@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- GLOBAL ELEMENTS ---
     const themeToggle = document.getElementById('themeToggle');
     const navbar = document.querySelector('.navbar');
+    const backToTop = document.getElementById('backToTop');
+    const scrollProgressBar = document.querySelector('.scroll-progress-bar');
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // --- THEME SWITCHER ---
     const applyTheme = (theme) => {
@@ -64,6 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('visible');
         }
+
+        // Back to top button
+        if (backToTop) {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        }
+
+        // Scroll progress bar
+        if (scrollProgressBar) {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+            scrollProgressBar.style.width = `${progress}%`;
+        }
         
         // Active link highlighting
         let currentSectionId = '';
@@ -75,15 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSectionId) {
-                link.classList.add('active');
+            const isActive = link.getAttribute('href').substring(1) === currentSectionId;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
             }
         });
     };
     
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
+
+    // --- BACK TO TOP ---
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
 
     // --- TYPING EFFECT ---
@@ -219,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll('section, .skill-card, .project-card, .contact-card, .contact-form-wrapper').forEach(el => {
+    document.querySelectorAll('section, .skill-card, .project-card, .timeline-item, .contact-card, .contact-form-wrapper').forEach(el => {
         animationObserver.observe(el);
     });
 });
