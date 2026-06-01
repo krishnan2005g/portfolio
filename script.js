@@ -222,18 +222,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('section, .skill-card, .project-card, .contact-card, .contact-form-wrapper').forEach(el => {
         animationObserver.observe(el);
     });
-
-    // --- CONTACT FORM ---
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would integrate with a service like EmailJS, Formspree, or your own backend.
-        const formData = new FormData(contactForm);
-        console.log("Form submitted with the following data:");
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
-    });
 });
