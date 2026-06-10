@@ -49,14 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(savedTheme);
 
 
-    // --- LOADER ---
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.querySelector('.loader').classList.add('hidden');
-        }, 500); // Shorter delay for faster load
-    });
-
-
     // --- NAVBAR VISIBILITY & ACTIVE LINK ---
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -110,40 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-
-    // --- TYPING EFFECT ---
-    const typingTextElement = document.querySelector('.typing-text');
-    const words = ["Software Developer", "Creative Problem-Solver"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-        const currentWord = words[wordIndex];
-        let displayText;
-
-        if (isDeleting) {
-            displayText = currentWord.substring(0, charIndex--);
-        } else {
-            displayText = currentWord.substring(0, charIndex++);
-        }
-        typingTextElement.textContent = displayText;
-
-        const typeSpeed = isDeleting ? 75 : 150;
-
-        if (!isDeleting && charIndex === currentWord.length + 1) {
-            isDeleting = true;
-            setTimeout(type, 2000);
-        } else if (isDeleting && charIndex === -1) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(type, 500);
-        } else {
-            setTimeout(type, typeSpeed);
-        }
-    }
-    type();
 
 
     // --- REUSABLE CAROUSEL CLASS ---
@@ -230,22 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
-                // Animate progress bars if they are in a visible skill card
-                if (entry.target.classList.contains('skill-card')) {
-                    const progressFill = entry.target.querySelector('.progress-fill');
-                    if (progressFill) {
-                        const percent = progressFill.getAttribute('data-percent');
-                        progressFill.style.width = percent;
-                    }
-                }
-                // Stop observing after animation
-                // observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll('section, .skill-card, .project-card, .timeline-item, .contact-card, .contact-form-wrapper').forEach(el => {
+    document.querySelectorAll('section, .skill-card, .project-card, .timeline-item, .contact-card').forEach(el => {
         animationObserver.observe(el);
     });
 });
