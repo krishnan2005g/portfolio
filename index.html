@@ -13,7 +13,7 @@
   </style>
   <noscript>
     <style>#__bundler_loading { display: none; }</style>
-    <div style="position:fixed;bottom:12px;left:12px;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#999;background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;box-shadow[...]
+    <div style="position:fixed;bottom:12px;left:12px;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#999;background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;box-sh[...]
       This page requires JavaScript to display.
     </div>
   </noscript>
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     var p = document.body || document.documentElement;
     var d = document.getElementById('__bundler_err') || p.appendChild(document.createElement('div'));
     d.id = '__bundler_err';
-    d.style.cssText = 'position:fixed;bottom:12px;left:12px;right:12px;font:12px/1.4 ui-monospace,monospace;background:#2a1215;color:#ff8a80;padding:10px 14px;border-radius:8px;border:1px solid #5c2b2[...]'
+    d.style.cssText = 'position:fixed;bottom:12px;left:12px;right:12px;font:12px/1.4 ui-monospace,monospace;background:#2a1215;color:#ff8a80;padding:10px 14px;border-radius:8px;border:1px solid #5[...]
     d.textContent = (d.textContent ? d.textContent + String.fromCharCode(10) : '') +
       '[bundle] ' + (e.message || e.type) +
       (e.filename ? ' (' + e.filename.slice(0, 60) + ':' + e.lineno + ')' : '');
@@ -58,14 +58,24 @@ document.addEventListener('DOMContentLoaded', async function() {
   try {
     const manifestEl = document.querySelector('script[type="__bundler/manifest"]');
     const templateEl = document.querySelector('script[type="__bundler/template"]');
-    if (!manifestEl || !templateEl) {
-      setStatus('Error: missing bundle data');
-      console.error('[bundler] Missing script tags — manifestEl:', !!manifestEl, 'templateEl:', !!templateEl);
+    if (!manifestEl) {
+      setStatus('Error: missing bundle manifest');
+      console.error('[bundler] Missing manifest script tag');
       return;
     }
 
     const manifest = JSON.parse(manifestEl.textContent);
-    let template = JSON.parse(templateEl.textContent);
+    // template may be missing in some builds/edits; fall back to current document
+    let template = null;
+    if (templateEl) {
+      try { template = JSON.parse(templateEl.textContent); } catch (e) {
+        console.warn('[bundler] template parse failed, falling back to current document');
+        template = document.documentElement.outerHTML;
+      }
+    } else {
+      console.warn('[bundler] Missing template — falling back to current document HTML as template');
+      template = document.documentElement.outerHTML;
+    }
 
     const uuids = Object.keys(manifest);
     setStatus('Unpacking ' + uuids.length + ' assets...');
